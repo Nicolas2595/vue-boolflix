@@ -5,7 +5,7 @@
   @searchedFilms="search"
   />
 
-  <main>
+  <main class="d-flex flex-wrap">
     <Movies
     v-for="(movie,index) in movies" 
     :key="index"
