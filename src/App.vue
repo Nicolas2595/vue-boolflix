@@ -9,10 +9,12 @@
     <Movies
     v-for="(movie,index) in movieAndSeries" 
     :key="index"
+    :poster="movie.poster_path"
     :titolo="movie.title || movie.name"
     :titoloOriginale="movie.original_title"
     :lingua="movie.original_language"
     :voto="movie.vote_average"
+    :overview="movie.overview"/>
     />
   </main>
   
@@ -74,5 +76,9 @@ export default {
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 @import '~bootstrap/scss/bootstrap';
 
+
+main {
+  justify-content: space-between;
+}
 
 </style>
