@@ -7,9 +7,12 @@
 
   <main class="d-flex flex-wrap">
     <Movies
-    v-for="(movie,index) in movies" 
+    v-for="(movie,index) in movieAndSeries" 
     :key="index"
-    :item="movie"
+    :titolo="movie.title || movie.name"
+    :titoloOriginale="movie.original_title"
+    :lingua="movie.original_language"
+    :voto="movie.vote_average"
     />
   </main>
   
@@ -34,22 +37,35 @@ export default {
     return {
       newFilm: '',
        movies: [],
+       series: [],
         api_key:"api_key=e99307154c6dfb0b4750f6603256716d",
         api_url:"https://api.themoviedb.org/3/search/movie?",
+        api_series_url:"https://api.themoviedb.org/3/search/tv?",
         query: '',
     }
   },
   methods: {
     search(string) {
        this.query = string;
+      axios.all([
       axios
-      .get(`${this.api_url}${this.api_key}&query=${this.query}`)
-      .then((res) => {
-      this.movies = res.data.results;
-      console.log(this.movies);
-      });
+      .get(`${this.api_url}${this.api_key}&query=${this.query}`),
+
+      axios
+      .get(`${this.api_series_url}${this.api_key}&query=${this.query}`)
+      ])
+
+      .then(axios.spread((res1, res2)=>{
+      this.movies = res1.data.results;
+      this.series = res2.data.results;}))
+     
     }
-  }
+  },
+  computed: {
+      movieAndSeries() {
+        return[...this.movies, ...this.series];
+      },
+  },
 }
 
 </script>
