@@ -5,10 +5,13 @@
             <h6>Titolo: {{ titolo }} </h6>
             <h6>Titolo Originale: 
             {{ titoloOriginale  }} </h6>
-            <img class="lingua" 
-            v-if="lingua == 'it'" src="../assets/images/it.png" alt="language" />
-            <img class="lingua" 
-            v-else-if="lingua == 'en'" src="../assets//images/en.png" alt="language">
+            <img 
+            class="flags"
+            :src="require(`../assets/images/${lingua}.png`)"
+            :alt=" `bandiera ${lingua}` "
+            v-if="availableFlags.includes(lingua)"
+            >
+            <p v-else>{{ lingua }}</p>
             <div class="star">
                 <h5>Voto:</h5> 
                 <span>
@@ -34,7 +37,8 @@ export default {
     data() {
         return {
             img_url: "https://image.tmdb.org/t/p/w342", 
-        }
+            availableFlags: ['it', 'en', 'es', 'fr', 'ja','pt'] 
+        };
     },
     computed: {
         changeVoto() {
@@ -95,7 +99,7 @@ export default {
                 }
             }
 
-            .lingua {
+            .flags {
                 width: 30px;
                 height: 30px;
                 padding-bottom: 10px;

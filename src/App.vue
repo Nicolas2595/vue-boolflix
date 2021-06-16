@@ -10,15 +10,16 @@
     v-for="(movie,index) in movieAndSeries" 
     :key="index"
     :poster="movie.poster_path"
-    :titolo="movie.title || movie.name"
-    :titoloOriginale="movie.original_title"
+    :titolo="movie.title ? movie.title : movie.name"
+    :titoloOriginale="movie.original_title ? movie.original_title : movie.original_name"
     :lingua="movie.original_language"
     :voto="movie.vote_average"
     :overview="movie.overview"/>
-    />
+
+    <h1 v-if="movieAndSeries.length == 0 && !searching"> Comincia la tua ricerca per iniziare a guardare tutte le serie tv e i film che vuoi   
+    </h1>
   </main>
   
-
   </div>
 </template>
 
@@ -44,6 +45,7 @@ export default {
         api_url:"https://api.themoviedb.org/3/search/movie?",
         api_series_url:"https://api.themoviedb.org/3/search/tv?",
         query: '',
+        searching: false
     }
   },
   methods: {
@@ -79,6 +81,12 @@ export default {
 
 main {
   justify-content: space-between;
+
+    h1 {
+      color: red;
+      text-align: center;
+      margin-top: 10%;
+    }
 }
 
 </style>
