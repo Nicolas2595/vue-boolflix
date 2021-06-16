@@ -16,7 +16,10 @@
     :voto="movie.vote_average"
     :overview="movie.overview"/>
 
-    <h1 v-if="movieAndSeries.length == 0 && !searching"> Comincia la tua ricerca per iniziare a guardare tutte le serie tv e i film che vuoi   
+    <h1 
+    v-if="movieAndSeries.length == 0 && !searching"
+    > 
+    Comincia la tua ricerca per iniziare a guardare tutte le serie tv e i film che vuoi   
     </h1>
   </main>
   

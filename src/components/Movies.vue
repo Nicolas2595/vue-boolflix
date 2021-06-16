@@ -3,9 +3,9 @@
         <img :src="img_url + poster">
         <div class="movies">
             <h6>Titolo: {{ titolo }} </h6>
-            <h6>Titolo Originale: 
+            <h6>Titolo Originale:
             {{ titoloOriginale  }} </h6>
-            <img 
+            <img
             class="flags"
             :src="require(`../assets/images/${lingua}.png`)"
             :alt=" `bandiera ${lingua}` "
@@ -13,7 +13,7 @@
             >
             <p v-else>{{ lingua }}</p>
             <div class="star">
-                <h5>Voto:</h5> 
+                <h5>Voto:</h5>
                 <span>
                     <i v-for="i in 5" :key="i" :class="i <= changeVoto ? 'fas fa-star' : 'far fa-star'"></i>
                 </span>
@@ -36,8 +36,8 @@ export default {
     },
     data() {
         return {
-            img_url: "https://image.tmdb.org/t/p/w342", 
-            availableFlags: ['it', 'en', 'es', 'fr', 'ja','pt'] 
+            img_url: "https://image.tmdb.org/t/p/w342",
+            availableFlags: ['it', 'en', 'es', 'fr', 'ja','pt']
         };
     },
     computed: {
@@ -56,6 +56,9 @@ export default {
         height: 350px;
         width: 200px;
         position: relative;
+        box-shadow: 4px 4px rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+
 
          img {
             height: 100%;
@@ -93,7 +96,7 @@ export default {
             }
 
             .star {
-                
+
                 i {
                     color: yellow;
                 }
@@ -110,5 +113,5 @@ export default {
     .movies_container:hover .movies {
         visibility: visible;
     }
-    
+
 </style>
