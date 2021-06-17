@@ -1,7 +1,7 @@
 <template>
   <div class="header_container">
       <div class="header_logo">
-          <img src="https://fontmeme.com/temporary/90d7ad0ac76991693a78931d3b0b6161.png" alt="logo">
+          <img src="../assets/images/logo.png" alt="logo">
       </div>
       <div class="header_right">
           <input

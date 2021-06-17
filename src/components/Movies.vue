@@ -1,6 +1,13 @@
 <template>
     <div class="movies_container">
-        <img :src="img_url + poster">
+        <img 
+        v-if="poster"
+        :src="img_url + poster"
+        >
+        <img 
+        v-else
+        src="https://legis.delaware.gov/Content/images/placeholder_leg.png" 
+        >
         <div class="movies">
             <h6>Titolo: {{ titolo }} </h6>
             <h6>Titolo Originale:
@@ -15,7 +22,9 @@
             <div class="star">
                 <h5>Voto:</h5>
                 <span>
-                    <i v-for="i in 5" :key="i" :class="i <= changeVoto ? 'fas fa-star' : 'far fa-star'"></i>
+                    <i v-for="i in 5" :key="i" :class="i <= changeVoto ? 'fas fa-star' : 'far fa-star'"
+                    >
+                    </i>
                 </span>
             </div>
             <p>Overview: {{ overview }} </p>
@@ -42,7 +51,7 @@ export default {
     },
     computed: {
         changeVoto() {
-            return Math.round(parseInt(this.voto) / 2);
+            return Math.ceil(parseInt(this.voto) / 2);
         }
     }
 };
